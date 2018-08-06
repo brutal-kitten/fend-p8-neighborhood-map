@@ -8,9 +8,9 @@ class SearchAndShow extends Component {
     let title = `Let's find a theater!`;
 
     return (
-      <div id="searchandshow">
+      <aside className="sidebar" id="searchandshow">
         <h2>{title}</h2>
-      </div>
+      </aside>
     )
   }
 }
