@@ -26,9 +26,10 @@
 
 #map {
   height: 50vw;
-  width: 100%;
-  overflow: visible !important;
+  width: 90vw;
   position: relative;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .wrap {
