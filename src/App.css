@@ -25,19 +25,22 @@
 }
 
 #map {
-  height: 50vw;
-  width: 90vw;
+  height: 100vw;
+  width: 100%;
   position: relative;
-  margin-left: 5%;
-  margin-right: 5%;
+  right: 0;
+
 }
 
 .wrap {
-  height: calc(100vh- 60px);
+  height: 90%;
+  width: 98%;
+  display: inline-grid;
+  grid-template-columns: 30% 70%;
 }
 
 .sidebar {
-  width: 30%;
+  width: 25%;
   height: 80%;
   overflow: visible;
 }
