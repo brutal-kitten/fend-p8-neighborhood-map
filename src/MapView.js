@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import scriptLoader from 'react-async-script-loader'
+import PropTypes from 'prop-types'
 
 class MapView extends Component {
 
+  static propTypes = {
+    locations: PropTypes.array.isRequired
+  }
 
   componentWillReceiveProps({isScriptLoadSucceed}){
     if(isScriptLoadSucceed) {
@@ -18,15 +22,6 @@ class MapView extends Component {
           center: {lat: 52.232658, lng: 21.004934},
           zoom: 13
         });
-
-    var locations = [
-      {title: "Teatr Dramatyczny" , location: {lat: 52.231672, lng: 21.008181}},
-      {title: "Roma Musical Theater" , location: {lat: 52.227561, lng: 21.008323}},
-      {title: "Kwadrat Theater" , location: {lat: 52.235969, lng: 21.008606}},
-      {title: "Och-Teatr" , location: {lat: 52.214326, lng: 20.980349}},
-      {title: "Capitol Theater" , location: {lat: 52.241328, lng: 21.003365}},
-      {title: "Polish National Opera" , location: {lat: 52.243530, lng: 21.010739}}
-    ]
 
     let markers = [];
 
@@ -45,7 +40,7 @@ class MapView extends Component {
       }
     }
 
-    locations.forEach((item) => {
+      this.props.locations.forEach((item) => {
       let position = item.location;
       let title = item.title;
       let marker = new window.google.maps.Marker({
@@ -80,5 +75,5 @@ class MapView extends Component {
 
 
 export default scriptLoader(
-  ["https://maps.googleapis.com/maps/api/js?key=AIzaSyD5Ns3nRSYw0-ydAGkx_4mzUM-BykeoIXg&v=3"]
+  ["https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyD5Ns3nRSYw0-ydAGkx_4mzUM-BykeoIXg&v=3"]
 )(MapView)
