@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  height: 90vh;
+  margin: 2%;
 }
 
 .App-header {
