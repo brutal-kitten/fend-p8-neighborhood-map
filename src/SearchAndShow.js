@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import ShowResult from './ShowResult'
+import PropTypes from 'prop-types'
 
 class SearchAndShow extends Component {
+
+  static propTypes = {
+    locations: PropTypes.array.isRequired
+  }
 
   render() {
 
@@ -13,7 +18,7 @@ class SearchAndShow extends Component {
       <aside className="sidebar" id="searchandshow">
         <h2>{title}</h2>
         <SearchBar/>
-        <ShowResult/>
+        <ShowResult locations={this.props.locations}/>
       </aside>
     )
   }

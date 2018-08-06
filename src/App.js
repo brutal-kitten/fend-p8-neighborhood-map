@@ -28,7 +28,7 @@ class App extends Component {
         </header>
         <div className="wrap">
           <Route exact path="/" render={() => (
-            <SearchAndShow/>
+            <SearchAndShow locations={this.state.locations}/>
           )}/>
           <Route exact path="/" render={() => (
             <MapView locations={this.state.locations}/>
