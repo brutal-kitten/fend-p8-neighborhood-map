@@ -14,7 +14,8 @@ class ShowResult extends Component {
         <ul className="list">
         {this.props.locations.map((item) => (
           <ItemOfList
-          title={item.title} />
+          title={item.name}
+          key={item.id} />
         ))}
         </ul>
       </div>

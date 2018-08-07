@@ -3,10 +3,12 @@ import { BrowserRouter } from 'react-router-dom'
 import scriptLoader from 'react-async-script-loader'
 import PropTypes from 'prop-types'
 
+
 class MapView extends Component {
 
   static propTypes = {
-    locations: PropTypes.array.isRequired
+    locations: PropTypes.array.isRequired,
+    google: PropTypes.object.isRequired
   }
 
   componentWillReceiveProps({isScriptLoadSucceed}){
@@ -41,14 +43,14 @@ class MapView extends Component {
     }
 
       this.props.locations.forEach((item) => {
-      let position = item.location;
-      let title = item.title;
+      let position = {lat: item.location.lat, lng: item.location.lng};
+      let title = item.name;
       let marker = new window.google.maps.Marker({
         map: map,
         position: position,
         title: title,
         animation: window.google.maps.Animation.DROP,
-        id: item.title
+        id: item.id
       });
 
       markers.push(marker);

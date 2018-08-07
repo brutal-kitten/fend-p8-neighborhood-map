@@ -9,14 +9,23 @@ import SearchAndShow from './SearchAndShow'
 class App extends Component {
 
   state = {
-    locations: [
-      {title: "Teatr Dramatyczny" , location: {lat: 52.231672, lng: 21.008181}},
-      {title: "Roma Musical Theater" , location: {lat: 52.227561, lng: 21.008323}},
-      {title: "Kwadrat Theater" , location: {lat: 52.235969, lng: 21.008606}},
-      {title: "Och-Teatr" , location: {lat: 52.214326, lng: 20.980349}},
-      {title: "Capitol Theater" , location: {lat: 52.241328, lng: 21.003365}},
-      {title: "Polish National Opera" , location: {lat: 52.243530, lng: 21.010739}}
-    ]
+    locations: [],
+    error: false
+  }
+
+  componentDidMount() {
+    if(true){
+    fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result.response.venues);
+      this.setState({ locations: result.response.venues})
+    })
+    .catch((err) => {
+      console.log(err);
+      this.setState({ error: true });
+    })
+    }
   }
 
 
@@ -24,16 +33,22 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">#TakeMeToTheTheater</h1>
+          <h1 className="App-title">#TakeMeToTheater</h1>
         </header>
-        <div className="wrap">
-          <Route exact path="/" render={() => (
-            <SearchAndShow locations={this.state.locations}/>
-          )}/>
-          <Route exact path="/" render={() => (
-            <MapView locations={this.state.locations}/>
-          )}/>
-        </div>
+        {this.state.error ? (
+          <div><h3> Ops! Try again</h3></div>
+        ) : (
+          <div className="wrap">
+            <Route exact path="/" render={() => (
+              <SearchAndShow locations={this.state.locations}/>
+            )}/>
+            <Route exact path="/" render={() => (
+              <MapView
+               locations={this.state.locations}
+               google={window.google}/>
+            )}/>
+          </div>)
+      }
         <footer>Made with love to culture</footer>
       </div>
     );
