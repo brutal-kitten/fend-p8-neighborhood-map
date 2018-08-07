@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import ItemOfList from './ItemOfList'
 
 class ShowResult extends Component {
 
@@ -12,7 +13,8 @@ class ShowResult extends Component {
       <div className="resultlist">
         <ul className="list">
         {this.props.locations.map((item) => (
-          <li>{item.title}</li>
+          <ItemOfList
+          title={item.title} />
         ))}
         </ul>
       </div>
