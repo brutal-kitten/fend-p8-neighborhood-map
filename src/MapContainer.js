@@ -15,7 +15,7 @@ export class MapContainer extends Component {
           {this.props.state.locations.map((place) => (
 
             <Marker
-              onClick={this.onMarkerClick}
+              onClick={this.props.onMarkerClick}
               name={place.name}
               position={{lat: place.location.lat, lng: place.location.lng}}
               animation={this.props.google.maps.Animation.DROP}
@@ -24,9 +24,11 @@ export class MapContainer extends Component {
           ))
           }
           <InfoWindow
+            visible={this.props.state.openInfoWindow}
+            marker={this.props.state.selectedMarker}
             onClose={this.onInfoWindowClose}>
             <div>
-              <h1>hello</h1>
+              <h1>{this.props.state.selectedMarker.name}</h1>
             </div>
           </InfoWindow>
         </Map>

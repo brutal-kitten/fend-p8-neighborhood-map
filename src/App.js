@@ -14,17 +14,23 @@ class App extends Component {
     locations: [],
     selectedPlace: [],
     error: false,
+    openInfoWindow: false,
+    selectedMarker: {},
+    fetchAgain: true
+
   }
 
   componentDidMount() {
-    let cache;
-    if(this.state.locations !== cache){
+
+    if(this.state.fetchAgain) {
     fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
     .then((response) => response.json())
     .then((result) => {
-      cache = result.response.venues;
-      console.log(cache);
-      this.setState({ locations: result.response.venues})
+      console.log(result.response.venues);
+      this.setState({
+        locations: result.response.venues,
+        fetchAgain: false
+      })
     })
     .catch((err) => {
       console.log(err);
@@ -32,6 +38,14 @@ class App extends Component {
     })
     }
   }
+
+  onMarkerClick = (props, marker, e) => {
+    console.log(marker);
+    this.setState({
+      openInfoWindow: true,
+      selectedMarker: marker
+    });
+  };
 
 
 
