@@ -3,6 +3,7 @@ import './App.css';
 import { Route } from 'react-router-dom' ;
 import MapView from './MapView';
 import SearchAndShow from './SearchAndShow'
+import MapContainer from './MapContainer'
 
 
 
@@ -11,7 +12,7 @@ class App extends Component {
 
   state = {
     locations: [],
-    markers: [],
+    selectedPlace: [],
     error: false,
   }
 
@@ -92,7 +93,7 @@ showMarkers = (map, bounds, largeInfoWindow) => {
       });
     }
   }
-  
+
 }
 
   initMap = () => {
@@ -128,8 +129,11 @@ showMarkers = (map, bounds, largeInfoWindow) => {
                hideListing={this.hideListing}/>
             )}/>
             <Route exact path="/" render={() => (
-              <MapView
-               initMap={this.initMap}
+              <MapContainer
+               google={window.google}
+               onMarkerClick={this.onMarkerClick}
+               onInfoWindowClose={this.onInfoWindowClose}
+               state={this.state}
                />
             )}/>
           </div>)
