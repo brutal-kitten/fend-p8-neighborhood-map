@@ -40,12 +40,18 @@ class App extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    console.log(marker);
     this.setState({
       openInfoWindow: true,
       selectedMarker: marker
     });
   };
+
+  onInfoWindowClose = (marker) => {
+    this.setState({
+      openInfoWindow: false,
+      selectedMarker: {}
+    })
+  }
 
 
 
