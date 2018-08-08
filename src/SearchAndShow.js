@@ -17,7 +17,10 @@ class SearchAndShow extends Component {
     return (
       <aside className="sidebar" id="searchandshow">
         <h2>{title}</h2>
-        <SearchBar/>
+        <SearchBar
+          showListing={this.props.showListing}
+          hideListing={this.props.hideListing}
+        />
         <ShowResult locations={this.props.locations}/>
       </aside>
     )
