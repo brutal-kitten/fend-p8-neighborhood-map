@@ -21,7 +21,10 @@ class SearchAndShow extends Component {
           showListing={this.props.showListing}
           hideListing={this.props.hideListing}
         />
-        <ShowResult locations={this.props.locations}/>
+        <ShowResult
+          locations={this.props.locations}
+          onItemClick={this.props.onItemClick}
+          />
       </aside>
     )
   }

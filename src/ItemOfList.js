@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-const ItemOfList = ( props ) => {
+class ItemOfList extends Component {
 
+render () {
   return (
-    <li className="listItem">
-      {props.title}
+    <li className="listItem" onClick={(e) => this.props.onItemClick(this.props.id, e)}>
+      {this.props.title}
     </li>
   )
+}
 }
 
 export default ItemOfList

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom' ;
-import MapView from './MapView';
 import SearchAndShow from './SearchAndShow'
 import MapContainer from './MapContainer'
 
 
-
+const markers = [];
 
 class App extends Component {
 
@@ -17,16 +16,16 @@ class App extends Component {
     openInfoWindow: false,
     selectedMarker: {},
     fetchAgain: true
+  };
 
-  }
 
   componentDidMount() {
 
     if(this.state.fetchAgain) {
-    fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
+    fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&url&venuePhoto=1&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
     .then((response) => response.json())
     .then((result) => {
-      console.log(result.response.venues);
+      console.log(result.response);
       this.setState({
         locations: result.response.venues,
         fetchAgain: false
@@ -40,6 +39,7 @@ class App extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
+    console.log(marker);
     this.setState({
       openInfoWindow: true,
       selectedMarker: marker
@@ -50,8 +50,21 @@ class App extends Component {
     this.setState({
       openInfoWindow: false,
       selectedMarker: {}
-    })
-  }
+    });
+  };
+
+  onItemClick = (key, e) => {
+    console.log(key);
+
+  };
+
+
+  addToArray = (e) => {
+    if(e && !markers.includes(e)) {
+      markers.push(e);
+      console.log(markers);
+    }
+  };
 
 
 
@@ -102,7 +115,7 @@ showMarkers = (map, bounds, largeInfoWindow) => {
 
 
   function populateInfoWindow (marker, infowindow, map)  {
-    if(infowindow.marker != marker) {
+    if(infowindow.marker !== marker) {
       infowindow.marker = marker;
 
       infowindow.setContent(
@@ -146,7 +159,9 @@ showMarkers = (map, bounds, largeInfoWindow) => {
               <SearchAndShow
                locations={this.state.locations}
                showListing={this.showListing}
-               hideListing={this.hideListing}/>
+               hideListing={this.hideListing}
+               onItemClick={this.onItemClick}
+               />
             )}/>
             <Route exact path="/" render={() => (
               <MapContainer
@@ -154,6 +169,7 @@ showMarkers = (map, bounds, largeInfoWindow) => {
                onMarkerClick={this.onMarkerClick}
                onInfoWindowClose={this.onInfoWindowClose}
                state={this.state}
+               addToArray={this.addToArray}
                />
             )}/>
           </div>)

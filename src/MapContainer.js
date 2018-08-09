@@ -4,6 +4,8 @@ import {GoogleApiWrapper, Map, InfoWindow, Marker} from 'google-maps-react';
 
 export class MapContainer extends Component {
 
+
+
   render() {
     return (
       <div className="map" role="application">
@@ -22,6 +24,8 @@ export class MapContainer extends Component {
                 this.props.google.maps.Animation.BOUNCE) : 0
               }
               key={place.id}
+              adress={place.location.address}
+              ref={this.props.addToArray}
             />
           ))
           }
@@ -29,8 +33,13 @@ export class MapContainer extends Component {
             visible={this.props.state.openInfoWindow}
             marker={this.props.state.selectedMarker}
             onClose={this.props.onInfoWindowClose}>
-            <div>
-              <h1>{this.props.state.selectedMarker.name}</h1>
+            <div className="InfoWindow">
+              <h2>{this.props.state.selectedMarker.name}</h2>
+              {
+
+              }
+              <p>{this.props.state.selectedMarker.adress}</p>
+
             </div>
           </InfoWindow>
         </Map>

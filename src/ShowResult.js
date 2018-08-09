@@ -15,7 +15,10 @@ class ShowResult extends Component {
         {this.props.locations.map((item) => (
           <ItemOfList
           title={item.name}
-          key={item.id} />
+          key={item.id}
+          onItemClick={this.props.onItemClick}
+          id={item.id}
+          />
         ))}
         </ul>
       </div>
