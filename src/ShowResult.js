@@ -17,7 +17,6 @@ class ShowResult extends Component {
           title={item.name}
           key={item.id}
           onItemClick={this.props.onItemClick}
-          id={item.id}
           />
         ))}
         </ul>

@@ -5,7 +5,7 @@ import SearchAndShow from './SearchAndShow'
 import MapContainer from './MapContainer'
 
 
-const markers = [];
+let markers = [];
 
 class App extends Component {
 
@@ -53,8 +53,15 @@ class App extends Component {
     });
   };
 
-  onItemClick = (key, e) => {
-    console.log(key);
+  onItemClick = (name, e) => {
+    this.name = name.toString();
+    console.log(name);
+    let selected = markers.filter(marker => marker.props.name == name);
+    console.log(selected);
+    this.setState({
+      openInfoWindow: true,
+      selectedMarker: selected[0].marker
+    });
 
   };
 
