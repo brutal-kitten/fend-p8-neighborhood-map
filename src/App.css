@@ -64,3 +64,8 @@ input {
   border-color: black;
   border-width: 1px;
 }
+
+.listItem:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
