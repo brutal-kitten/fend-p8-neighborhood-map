@@ -5,14 +5,14 @@ import ItemOfList from './ItemOfList'
 class ShowResult extends Component {
 
   static propTypes = {
-    locations: PropTypes.array.isRequired
+    selectedPlaces: PropTypes.array.isRequired
   }
 
   render() {
     return (
       <div className="resultlist">
         <ul className="list">
-        {this.props.locations.map((item) => (
+        {this.props.selectedPlaces.map((item) => (
           <ItemOfList
           title={item.name}
           key={item.id}

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 class SearchAndShow extends Component {
 
   static propTypes = {
-    locations: PropTypes.array.isRequired
+    selectedPlaces: PropTypes.array.isRequired
   }
 
   render() {
@@ -20,9 +20,10 @@ class SearchAndShow extends Component {
         <SearchBar
           showListing={this.props.showListing}
           hideListing={this.props.hideListing}
+          searchForPlace={this.props.searchForPlace}
         />
         <ShowResult
-          locations={this.props.locations}
+          selectedPlaces={this.props.selectedPlaces}
           onItemClick={this.props.onItemClick}
           />
       </aside>

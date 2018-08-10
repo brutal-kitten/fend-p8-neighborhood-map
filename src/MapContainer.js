@@ -14,7 +14,7 @@ export class MapContainer extends Component {
           zoom={13}
           initialCenter={{lat: 52.232658, lng: 21.004934}}
           >
-          {this.props.state.locations.map((place) => (
+          {this.props.state.selectedPlaces.map((place) => (
 
             <Marker
               onClick={this.props.onMarkerClick}

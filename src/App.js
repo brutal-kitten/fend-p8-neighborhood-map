@@ -11,7 +11,7 @@ class App extends Component {
 
   state = {
     locations: [],
-    selectedPlace: [],
+    selectedPlaces: [],
     error: false,
     openInfoWindow: false,
     selectedMarker: {},
@@ -28,6 +28,7 @@ class App extends Component {
       console.log(result.response);
       this.setState({
         locations: result.response.venues,
+        selectedPlaces: result.response.venues,
         fetchAgain: false
       })
     })
@@ -39,7 +40,7 @@ class App extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    console.log(marker);
+
     this.setState({
       openInfoWindow: true,
       selectedMarker: marker
@@ -55,9 +56,9 @@ class App extends Component {
 
   onItemClick = (name, e) => {
     this.name = name.toString();
-    console.log(name);
+
     let selected = markers.filter(marker => marker.props.name == name);
-    console.log(selected);
+
     this.setState({
       openInfoWindow: true,
       selectedMarker: selected[0].marker
@@ -69,87 +70,15 @@ class App extends Component {
   addToArray = (e) => {
     if(e && !markers.includes(e)) {
       markers.push(e);
-      console.log(markers);
+
     }
   };
 
+  searchForPlace = (place) => {
+    console.log(place);
 
-
-
-  showListing = () => {
-    console.log("show!");
-  //  let bounds = new window.google.maps.LatLngBounds();
-
-  //  for(var i = 0; i < markers.length; i++) {
-    //  markers[i].setMap(map);
-      //bounds.extend(markers[i].position);
-    //}
-    //map.fitBounds(bounds);
   }
 
-  hideListing = () => {
-    console.log('hide!');
-  /*  for (var i = 0; i < markers.length; i++){
-      markers[i].setMap(null);
-    } */
-  }
-
-showMarkers = (map, bounds, largeInfoWindow) => {
-
-  let markers= [];
-
-  this.state.locations.forEach((item) => {
-    let position = {lat: item.location.lat, lng: item.location.lng};
-    let title = item.name;
-    let marker = new window.google.maps.Marker({
-      map: map,
-      position: position,
-      title: title,
-      animation: window.google.maps.Animation.DROP,
-      id: item.id
-  });
-
-    bounds.extend(marker.position);
-
-    marker.addListener('click', function() {
-      populateInfoWindow(this, largeInfoWindow, map);
-    });
-
-    markers.push(marker);
-
-  });
-
-
-
-  function populateInfoWindow (marker, infowindow, map)  {
-    if(infowindow.marker !== marker) {
-      infowindow.marker = marker;
-
-      infowindow.setContent(
-        '<div>' + marker.title + '<div>' + '<div>' + 'adress' + '<div>');
-      infowindow.open(map, marker);
-      infowindow.addListener('closeclick', function(){
-        infowindow.setMarker = null;
-      });
-    }
-  }
-
-}
-
-  initMap = () => {
-    let map = new window.google.maps.Map(document.getElementById('map'), {
-          center: {lat: 52.232658, lng: 21.004934},
-          zoom: 13
-        });
-
-
-    let largeInfoWindow = new window.google.maps.InfoWindow();
-    let bounds = new window.google.maps.LatLngBounds();
-
-    this.showMarkers(map, bounds, largeInfoWindow);
-
-    map.fitBounds(bounds);
-  }
 
 
   render() {
@@ -164,10 +93,11 @@ showMarkers = (map, bounds, largeInfoWindow) => {
           <div className="wrap">
             <Route exact path="/" render={() => (
               <SearchAndShow
-               locations={this.state.locations}
+               selectedPlaces={this.state.selectedPlaces}
                showListing={this.showListing}
                hideListing={this.hideListing}
                onItemClick={this.onItemClick}
+               searchForPlace={this.searchForPlace}
                />
             )}/>
             <Route exact path="/" render={() => (
