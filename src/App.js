@@ -75,7 +75,13 @@ class App extends Component {
   };
 
   searchForPlace = (place) => {
+    place = place.toLowerCase();
     console.log(place);
+    let filtered = this.state.locations.filter(item => item.name.toLowerCase().includes(place));
+    console.log(filtered);
+    this.setState({
+      selectedPlaces: filtered
+    })
 
   }
 
