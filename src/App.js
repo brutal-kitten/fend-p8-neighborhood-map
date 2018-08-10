@@ -16,6 +16,7 @@ class App extends Component {
     openInfoWindow: false,
     selectedMarker: {},
     fetchAgain: true
+
   };
 
 
@@ -35,7 +36,8 @@ class App extends Component {
     .catch((err) => {
       console.log(err);
       this.setState({ error: true });
-    })
+    });
+
     }
   }
 
@@ -107,13 +109,15 @@ class App extends Component {
                />
             )}/>
             <Route exact path="/" render={() => (
-              <MapContainer
-               google={window.google}
-               onMarkerClick={this.onMarkerClick}
-               onInfoWindowClose={this.onInfoWindowClose}
-               state={this.state}
-               addToArray={this.addToArray}
-               />
+              <div id="map" role="application">
+                <MapContainer
+                  google={window.google}
+                  onMarkerClick={this.onMarkerClick}
+                  onInfoWindowClose={this.onInfoWindowClose}
+                  state={this.state}
+                  addToArray={this.addToArray}
+                />
+              </div>  
             )}/>
           </div>)
       }

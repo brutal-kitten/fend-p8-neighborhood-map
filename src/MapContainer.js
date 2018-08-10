@@ -4,15 +4,23 @@ import {GoogleApiWrapper, Map, InfoWindow, Marker} from 'google-maps-react';
 
 export class MapContainer extends Component {
 
+  bounds = new this.props.google.maps.LatLngBounds();
+
+
 
 
   render() {
+    this.props.state.locations.map((item) => {
+      this.bounds.extend({lat: item.location.lat, lng: item.location.lng});
+    });
+
     return (
-      <div className="map" role="application">
+
         <Map
           google={this.props.google}
           zoom={13}
           initialCenter={{lat: 52.232658, lng: 21.004934}}
+          bounds={this.bounds}
           >
           {this.props.state.selectedPlaces.map((place) => (
 
@@ -43,7 +51,7 @@ export class MapContainer extends Component {
             </div>
           </InfoWindow>
         </Map>
-      </div>
+
     )
   }
 }
