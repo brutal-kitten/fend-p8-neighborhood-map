@@ -23,7 +23,7 @@ class App extends Component {
   componentDidMount() {
 
     if(this.state.fetchAgain) {
-    fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&url&venuePhoto=1&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
+    fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&url&venuePhotos=1&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
     .then((response) => response.json())
     .then((result) => {
       console.log(result.response);
@@ -36,13 +36,47 @@ class App extends Component {
     .catch((err) => {
       console.log(err);
       this.setState({ error: true });
-    });
+    })
+  /*  .then(() => {
+      this.state.locations.map((item) => {
+        console.log(item.id);
+        let link = "https://api.foursquare.com/v2/venues/" + item.id + "/photos?client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323";
 
-    }
+        fetch(link)
+         .then((response) => response.json())
+         .then((result) => {
+           console.log(item.id);
+           console.log(result);
+
+         })
+         .catch((err) => {
+           console.log(err);
+         });
+
+       }
+
+     )}
+    )
+*/
+  };
+
+ this.state.locations.map((item) => {
+   let link = "https://api.foursquare.com/v2/venues/" + item.id + "/photos?client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323";
+
+   fetch(link)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  })
+
   }
 
   onMarkerClick = (props, marker, e) => {
-
+    console.log(marker);
     this.setState({
       openInfoWindow: true,
       selectedMarker: marker
@@ -117,7 +151,7 @@ class App extends Component {
                   state={this.state}
                   addToArray={this.addToArray}
                 />
-              </div>  
+              </div>
             )}/>
           </div>)
       }
