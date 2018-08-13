@@ -20,17 +20,17 @@ export const photos = [
     { id: "4d2a0307849f3704860a8441", link : "https://igx.4sqi.net/img/general/100x100/27501418_NYe5aRg6KubL7r7L9cEEbg93mZrdODH9oVsIpvmg6SI.jpg" },
     { id: "4c8baff49ef0224b2585667b", link : "https://igx.4sqi.net/img/general/100x100/58177234_JpnMrjWs4eIxzW7BpwFPJDptL_KvtSLnp31NKSYMows.jpg" },
     { id: "4baf854cf964a520bf063ce3", link : "https://igx.4sqi.net/img/general/100x100/DN3UCGOBBOMNRC0JGNK0FPJW2PPATK0T3JCQAVKNVB5BKLRW.jpg" },
-    { id: "51b756c7498e9e3b00436040", link : "" },
-    { id: "4ba3cd0cf964a520f46038e3", link : "" },
-    { id: "4c763a4c604a3704c1c78449", link : "" },
+    { id: "51b756c7498e9e3b00436040", link : false },
+    { id: "4ba3cd0cf964a520f46038e3", link : false },
+    { id: "4c763a4c604a3704c1c78449", link : false },
     { id: "4b737dc2f964a52011b12de3", link : "https://igx.4sqi.net/img/general/100x100/16242079_jc-YgaJycbSjNFajpIRheuPPXDEsojgi7UN58HI5hQk.jpg" },
     { id: "4bf58aa894b2a5931fc8abee", link : "https://igx.4sqi.net/img/general/100x100/81925269_JRpIJHwpoZoINExe5b-5ewC_ogVvqTLHMCAOvrVf7LE.jpg" },
     { id: "4b99fd73f964a520119a35e3", link : "https://igx.4sqi.net/img/general/100x100//28756_c8KSdJTFyumI5sXZIBskSAu1fus1nCq_Fll8_UbGe6c.jpg" },
     { id: "4d448ca7befe236aa71df6e2", link : "https://igx.4sqi.net/img/general/100x100/41819799_e0FxcQlyD1N6ruxaC8J3lHeqqfXA39XXiHi0nayQsQo.jpg" },
     { id: "4cf3fc90e3b9a093679d4c53", link : "https://igx.4sqi.net/img/general/100x100/11075851_dJOcigopJ5_UAIEPsysUskSiDe-ZktyARz5bFqbVeQ4.jpg" },
-    { id: "4f8489f8e4b0f8430ec67283", link : "" },
-    { id: "4cf40fe5e942548137ea78c5", link: "" },
-    { id: "51812f1dabd80b25bc0bba54", link: "no photo" },
+    { id: "4f8489f8e4b0f8430ec67283", link : false },
+    { id: "4cf40fe5e942548137ea78c5", link: false },
+    { id: "51812f1dabd80b25bc0bba54", link: "http://via.placeholder.com/100x100" },
     { id: "4bd7206329eb9c743f3f96e1", link: "https://igx.4sqi.net/img/general/100x100/28756_Lyidnm1D4EWFD3x9x9fnAggjrx2vNGv0uiGQO4PETdY.jpg" }
   ];
 
@@ -45,7 +45,7 @@ export class MapContainer extends Component {
     console.log(id);
     let filter = photos.filter(item => item.id === id);
     console.log(filter);
-    let url = filter[0].link;
+    let url = filter[0].link ? filter[0].link : "http://via.placeholder.com/100x100";
     console.log(url);
     return url;
   }
