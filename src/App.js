@@ -60,19 +60,6 @@ class App extends Component {
 */
   };
 
- this.state.locations.map((item) => {
-   let link = "https://api.foursquare.com/v2/venues/" + item.id + "/photos?client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323";
-
-   fetch(link)
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  })
-
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -93,7 +80,7 @@ class App extends Component {
   onItemClick = (name, e) => {
     this.name = name.toString();
 
-    let selected = markers.filter(marker => marker.props.name == name);
+    let selected = markers.filter(marker => marker.props.name === name);
 
     this.setState({
       openInfoWindow: true,
