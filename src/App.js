@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom' ;
-import SearchAndShow from './SearchAndShow'
-import MapContainer from './MapContainer'
+import SearchAndShow from './SearchAndShow';
+import MapContainer from './MapContainer';
+import MenuButton from './MenuButton';
 
 
 let markers = [];
@@ -87,12 +88,17 @@ class App extends Component {
 
   }
 
+  activateToggle = () => {
+
+  }
+
 
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
+          <MenuButton activateToggle={this.activateToggle}/>
           <h1 className="App-title">#TakeMeToTheater</h1>
         </header>
         {this.state.error ? (

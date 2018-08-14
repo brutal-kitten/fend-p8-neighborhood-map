@@ -12,11 +12,11 @@ export class MapContainer extends Component {
 
   getPhoto = () => {
     let id = this.props.state.selectedMarker.id;
-    console.log(id);
+
     let filter = photos.filter(item => item.id === id);
-    console.log(filter);
+
     let url = filter[0].link ? filter[0].link : "http://via.placeholder.com/100x100";
-    console.log(url);
+    
     return url;
   }
 
