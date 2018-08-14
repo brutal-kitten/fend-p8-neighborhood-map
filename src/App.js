@@ -37,27 +37,6 @@ class App extends Component {
       console.log(err);
       this.setState({ error: true });
     })
-  /*  .then(() => {
-      this.state.locations.map((item) => {
-        console.log(item.id);
-        let link = "https://api.foursquare.com/v2/venues/" + item.id + "/photos?client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323";
-
-        fetch(link)
-         .then((response) => response.json())
-         .then((result) => {
-           console.log(item.id);
-           console.log(result);
-
-         })
-         .catch((err) => {
-           console.log(err);
-         });
-
-       }
-
-     )}
-    )
-*/
   };
 
   }
