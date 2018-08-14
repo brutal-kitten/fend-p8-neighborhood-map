@@ -16,8 +16,14 @@ export class MapContainer extends Component {
     let filter = photos.filter(item => item.id === id);
 
     let url = filter[0].link ? filter[0].link : "http://via.placeholder.com/100x100";
-    
+
     return url;
+  }
+
+  addLink = () => {
+    let id = this.props.state.selectedMarker.id;
+    let link = `http://foursquare.com/v/ ${id}`;
+    return link;
   }
 
 
@@ -57,11 +63,16 @@ export class MapContainer extends Component {
             marker={this.props.state.selectedMarker}
             onClose={this.props.onInfoWindowClose}>
             <div className="InfoWindow">
-              <h2>{this.props.state.selectedMarker.name}</h2>
+              <h2><a href={this.addLink()}>{this.props.state.selectedMarker.name}</a></h2>
               {this.props.state.openInfoWindow ? (
+                <div>
                 <p className="picture">
                   <image src = {this.getPhoto()} />
                 </p>
+                <div>
+                  <img src="./powered-by-foursquare-grey.svg" alt="powered by foursquare" />
+                </div>
+                </div>
               ) : null}
               <p>{this.props.state.selectedMarker.adress}</p>
 

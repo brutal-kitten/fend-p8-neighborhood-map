@@ -16,7 +16,8 @@ class App extends Component {
     error: false,
     openInfoWindow: false,
     selectedMarker: {},
-    fetchAgain: true
+    fetchAgain: true,
+    showSidebar: true
 
   };
 
@@ -89,7 +90,7 @@ class App extends Component {
   }
 
   activateToggle = () => {
-
+    (this.state.showSidebar) ? (this.setState({ showSidebar: false })) : (this.setState({ showSidebar: true }))
   }
 
 
@@ -105,6 +106,7 @@ class App extends Component {
           <div><h3> Ops! Try again</h3></div>
         ) : (
           <div className="wrap">
+            { this.state.showSidebar && (
             <Route exact path="/" render={() => (
               <SearchAndShow
                selectedPlaces={this.state.selectedPlaces}
@@ -114,6 +116,7 @@ class App extends Component {
                searchForPlace={this.searchForPlace}
                />
             )}/>
+          )}
             <Route exact path="/" render={() => (
               <div id="map" role="application">
                 <MapContainer
@@ -127,7 +130,10 @@ class App extends Component {
             )}/>
           </div>)
       }
-        <footer>Made with love to culture</footer>
+        <footer>
+          <p>Made with love to culture</p>
+          <p><img src="./powered-by-foursquare-grey.svg" alt="powered by foursquare"/></p>
+        </footer>
       </div>
     );
   }

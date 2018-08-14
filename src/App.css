@@ -7,7 +7,7 @@
 .App-header {
   background-color: green;
   height: 10%;
-  padding: 5px;
+  padding: 0px;
   color: white;
   position: relative;
   top: 0;
@@ -17,7 +17,7 @@
 }
 
 .button {
-  background-color: black;
+  background-color: white;
   margin: 6px 0;
   height: 5px;
   width: 40px;
@@ -35,16 +35,8 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 #map {
-  height: 100%;
-  width: 100%;
   position: relative;
-  right: 0;
   flex: 1;
 
 }
@@ -52,12 +44,11 @@
 .wrap {
   height: 90%;
   width: 100%;
-  display: inline-grid;
-  grid-template-columns: 30% auto;
+  display: flex;
 }
 
 .sidebar {
-  width: 100%;
+  width: 300px;
   height: 80%;
   overflow: visible;
 }
@@ -80,7 +71,22 @@ input {
   border-width: 1px;
 }
 
+.listItem {
+  text-align: left;
+}
+
 .listItem:hover {
   background-color: yellow;
   cursor: pointer;
+
+}
+
+footer {
+  background-color: green;
+  height: 10%;
+  padding: 0px;
+  color: white;
+  position: relative;
+  top: 0;
+  width: 100%;
 }
