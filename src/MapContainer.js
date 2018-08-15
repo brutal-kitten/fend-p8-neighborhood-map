@@ -22,7 +22,7 @@ export class MapContainer extends Component {
 
   addLink = () => {
     let id = this.props.state.selectedMarker.id;
-    let link = `http://foursquare.com/v/ ${id}`;
+    let link = `http://foursquare.com/v/${id}`;
     return link;
   }
 
