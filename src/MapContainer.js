@@ -53,7 +53,7 @@ export class MapContainer extends Component {
             marker={this.props.state.selectedMarker}
             onClose={this.props.onInfoWindowClose}>
             <div className="InfoWindow">
-              <h2><a href={this.addLink()}>{this.props.state.selectedMarker.name}</a></h2>
+              <h3><a href={this.addLink()}>{this.props.state.selectedMarker.name}</a></h3>
               {this.props.state.openInfoWindow ? (
                 <div>
                 <p className="picture">
