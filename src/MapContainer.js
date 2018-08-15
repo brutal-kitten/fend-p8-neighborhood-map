@@ -60,7 +60,7 @@ export class MapContainer extends Component {
                   <image src = {this.getPhoto()} />
                 </p>
                 <div>
-                  <img src={svg} alt="powered by foursquare" />
+                  <img src={svg} className="foursquareSvg" alt="powered by foursquare" />
                 </div>
                 </div>
               ) : null}

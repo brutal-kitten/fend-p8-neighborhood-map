@@ -1,15 +1,22 @@
 .App {
   text-align: center;
-  height: 90vh;
   margin: 2%;
+  height: 90%;
 }
+
+.App, body, p, li {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+
+
 
 .App-header {
   background-color: green;
   height: 10%;
   padding: 0px;
   color: white;
-  position: relative;
+  position: sticky;
   top: 0;
   width: 100%;
   display: inline-grid;
@@ -30,7 +37,8 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 24px;
+  font-weight: normal;
 }
 
 .App-intro {
@@ -44,19 +52,20 @@
 }
 
 .wrap {
-  height: 90%;
+  height: 100vh;
   width: 100%;
   display: flex;
 }
 
 .sidebar {
   width: 300px;
-  height: 80%;
-  overflow: visible;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 h2 {
   font-size: 16px;
+  color: green;
 }
 
 li {
@@ -66,19 +75,26 @@ li {
 
 ul.list {
   width: 100%;
+  list-style-type: none;
+  padding-left: 0;
+
 }
 
 input {
-  border-color: black;
+  border-color: green;
   border-width: 1px;
+  text-align: center;
 }
 
 .listItem {
   text-align: left;
+  padding: 10px 5px 10px 15px;
+  width: 280px;
+  display: flex;
 }
 
 .listItem:hover {
-  background-color: yellow;
+  background-color: #a1f442;
   cursor: pointer;
 
 }
@@ -89,10 +105,20 @@ footer {
   padding: 0px;
   color: white;
   position: relative;
-  top: 0;
+  padding-top: 5px;
   width: 100%;
+
 }
 
 .foursquare {
   height: 10px;
+}
+
+img.foursquareSvg {
+  max-height: 8px;
+}
+
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

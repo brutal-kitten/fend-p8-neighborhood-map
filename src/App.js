@@ -101,7 +101,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <MenuButton activateToggle={this.activateToggle}/>
-          <h1 className="App-title">#TakeMeToTheater</h1>
+          <h1 className="App-title">Theaters in Warsaw</h1>
         </header>
         {this.state.error ? (
           <div><h3> Ops! Try again</h3></div>
