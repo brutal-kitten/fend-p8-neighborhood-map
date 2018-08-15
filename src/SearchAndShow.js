@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import ShowResult from './ShowResult'
 import PropTypes from 'prop-types'

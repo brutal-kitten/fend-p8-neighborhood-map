@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom' ;
 import SearchAndShow from './SearchAndShow';
 import MapContainer from './MapContainer';
 import MenuButton from './MenuButton';
+import img from './powered-by-foursquare-white.png'
 
 
 let markers = [];
@@ -132,7 +133,7 @@ class App extends Component {
       }
         <footer>
           <p>Made with love to culture</p>
-          <p><img src="./powered-by-foursquare-grey.svg" alt="powered by foursquare"/></p>
+          <p><img className="foursquare" src={img} alt="powered by foursquare" /></p>
         </footer>
       </div>
     );

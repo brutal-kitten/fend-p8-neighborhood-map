@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import {GoogleApiWrapper, Map, InfoWindow, Marker} from 'google-maps-react';
 import photos from './PhotosOfPlaces'
-
+import svg from './powered-by-foursquare-grey.svg'
 
 export class MapContainer extends Component {
-
-  bounds = new this.props.google.maps.LatLngBounds();
-
-
 
   getPhoto = () => {
     let id = this.props.state.selectedMarker.id;
@@ -29,18 +25,12 @@ export class MapContainer extends Component {
 
   render() {
 
-
-    this.props.state.locations.map((item) => {
-      this.bounds.extend({lat: item.location.lat, lng: item.location.lng});
-    });
-
     return (
 
         <Map
           google={this.props.google}
           zoom={13}
           initialCenter={{lat: 52.232658, lng: 21.004934}}
-          bounds={this.bounds}
           >
           {this.props.state.selectedPlaces.map((place) => (
 
@@ -70,7 +60,7 @@ export class MapContainer extends Component {
                   <image src = {this.getPhoto()} />
                 </p>
                 <div>
-                  <img src="./powered-by-foursquare-grey.svg" alt="powered by foursquare" />
+                  <img src={svg} alt="powered by foursquare" />
                 </div>
                 </div>
               ) : null}
