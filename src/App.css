@@ -16,7 +16,7 @@
   height: 10%;
   padding: 0px;
   color: white;
-  position: sticky;
+
   top: 0;
   width: 100%;
   display: inline-grid;
@@ -37,7 +37,7 @@
 }
 
 .App-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: normal;
 }
 
@@ -48,11 +48,12 @@
 #map {
   position: relative;
   flex: 1;
+  height: 100%;
 
 }
 
 .wrap {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   display: flex;
 }
@@ -121,4 +122,99 @@ img.foursquareSvg {
 p {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+
+
+@media screen and (min-width: 800px) {
+
+  .App-header {
+    grid-template-columns: 80px auto;
+  }
+
+  .App-title {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+
+  .wrap {
+    flex-direction: column-reverse;
+  }
+
+  #map,
+  .sidebar  {
+    height: 45vh;
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+
+  li.listItem {
+    width: 90%;
+  }
+
+  .App {
+    margin: 5px 5% 2px 5%;
+  }
+}
+
+@media screen and (max-width: 510px) {
+
+  .App-title {
+    font-size: 16px;
+    padding-top: 8px;
+  }
+
+  .App-header {
+    height: 8%;
+  }
+
+  .MenuButton {
+    padding: 8px;
+  }
+
+  .button {
+    width: 30px;
+  }
+
+  footer {
+    background-color: green;
+    height: 8%;
+    padding-top: 5px;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .foursquare {
+    height: 8px;
+  }
+
+  li.listItem {
+    font-size: 12px;
+    padding: 5px 5px 5px 15px;
+  }
+}
+
+@media screen and (min-width: 510px) and (max-width: 710px) {
+
+  li.listItem {
+    font-size: 14px;
+    padding: 7px 5px 7px 15px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  .App-title {
+    font-size: 20px;
+    padding-top: 8px;
+  }
 }
