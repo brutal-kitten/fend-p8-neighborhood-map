@@ -3,7 +3,7 @@ import React from 'react';
 function MenuButton(props) {
 
   return (
-    <button className="MenuButton" onClick={props.activateToggle}>
+    <button type="button" aria-label="Toggle Menu Button" className="MenuButton" onClick={props.activateToggle}>
       <div className="button"></div>
       <div className="button"></div>
       <div className="button"></div>
