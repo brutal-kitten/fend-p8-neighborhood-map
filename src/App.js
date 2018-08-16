@@ -26,23 +26,29 @@ class App extends Component {
   componentDidMount() {
 
     if(this.state.fetchAgain) {
-    fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&url&venuePhotos=1&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result.response);
-      this.setState({
-        locations: result.response.venues,
-        selectedPlaces: result.response.venues,
-        fetchAgain: false
-      })
-    })
-    .catch((err) => {
-      console.log(err);
-      this.setState({ error: true });
-    })
+      fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&url&venuePhotos=1&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result.response);
+          this.setState({
+            locations: result.response.venues,
+            selectedPlaces: result.response.venues,
+            fetchAgain: false
+          })
+        })
+        .catch((err) => {
+          console.log(err);
+          this.setState({ error: true });
+        })
+      };
+
+      window.gm_authFailure = () => {
+        alert('Sorry, some problems occured while loading Google Maps. Try again!');
+      };
   };
 
-  }
+
+
 
   onMarkerClick = (props, marker, e) => {
     console.log(marker);
@@ -104,7 +110,7 @@ class App extends Component {
           <h1 className="App-title">Theaters in Warsaw</h1>
         </header>
         {this.state.error ? (
-          <div><h3> Ops! Try again</h3></div>
+          <div><h3> Oops! Try again</h3></div>
         ) : (
           <div className="wrap">
             { this.state.showSidebar && (
