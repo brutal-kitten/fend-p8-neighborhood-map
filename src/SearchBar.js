@@ -27,6 +27,7 @@ class SearchBar extends Component {
             value={this.state.query}
             onChange={(event) => this.updateQuery(event.target.value)}
             aria-label="Search teater by name"
+            aria-required="true"
           />
           </form>
         </div>

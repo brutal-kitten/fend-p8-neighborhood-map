@@ -45,8 +45,7 @@ class App extends Component {
       window.gm_authFailure = () => {
         alert('Sorry, some problems occured while loading Google Maps. Try again!');
       };
-  };
-
+}
 
 
 

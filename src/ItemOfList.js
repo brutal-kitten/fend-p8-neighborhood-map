@@ -5,7 +5,7 @@ class ItemOfList extends Component {
 
 render () {
   return (
-    <li className="listItem" onClick={(e) => this.props.onItemClick(this.props.title, e)}>
+    <li tabIndex="0" className="listItem" onFocus={(e) => this.props.onItemClick(this.props.title, e)} onClick={(e) => this.props.onItemClick(this.props.title, e)}>
       {this.props.title}
     </li>
   )

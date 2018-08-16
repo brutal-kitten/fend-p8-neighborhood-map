@@ -6,6 +6,7 @@ import svg from './powered-by-foursquare-grey.svg'
 
 export class MapContainer extends Component {
 
+
   getPhoto = () => {
     let id = this.props.state.selectedMarker.id;
 
@@ -57,7 +58,7 @@ export class MapContainer extends Component {
               {this.props.state.openInfoWindow ? (
                 <div>
                 <p className="picture">
-                  <image src = {this.getPhoto()} />
+                  <image src = {this.getPhoto()} alt="photo of this place from foursquare"/>
                 </p>
                 <div>
                   <img src={svg} className="foursquareSvg" alt="powered by foursquare" />
