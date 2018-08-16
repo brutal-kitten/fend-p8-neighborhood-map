@@ -6,17 +6,15 @@ import svg from './powered-by-foursquare-grey.svg'
 
 export class MapContainer extends Component {
 
-
+  //find a link to photo for the marker id and return this link
   getPhoto = () => {
     let id = this.props.state.selectedMarker.id;
-
     let filter = photos.filter(item => item.id === id);
-
-    let url = filter[0].link ? filter[0].link : "http://via.placeholder.com/100x100";
-
+    let url = filter[0] ? filter[0].link : "http://via.placeholder.com/100x100";
     return url;
   }
 
+  // make a link to foursquare place's page and return this link
   addLink = () => {
     let id = this.props.state.selectedMarker.id;
     let link = `http://foursquare.com/v/${id}`;

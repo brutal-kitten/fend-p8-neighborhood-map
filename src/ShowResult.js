@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+
 import ItemOfList from './ItemOfList'
 
 class ShowResult extends Component {
 
-  static propTypes = {
-    selectedPlaces: PropTypes.array.isRequired
-  }
 
   render() {
     return (
