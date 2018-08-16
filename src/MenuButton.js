@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MenuButton(props) {
+const MenuButton = (props) => {
 
   return (
     <button tabIndex='0' type="button" aria-label="Toggle Menu Button" className="MenuButton" onClick={props.activateToggle}>
