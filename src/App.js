@@ -30,13 +30,17 @@ class App extends Component {
       fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&url&venuePhotos=1&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
         .then((response) => response.json())
         .then((result) => {
+          if(!result.response.confident){
+            this.setState({error: true });
+          } else {
           console.log(result.response);
           this.setState({
             locations: result.response.venues,
             selectedPlaces: result.response.venues,
             fetchAgain: false
           })
-        })
+       }
+      })
         .catch((err) => {
           //if error was catched sets the state in order to render arror message
           this.setState({ error: true });
