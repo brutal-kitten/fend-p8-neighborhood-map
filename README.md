@@ -1,4 +1,4 @@
-# Theaters in Warsaw Map
+# Theatres in Warsaw Map
 Project 8 for Front-End Nanodegree Program @Udacity
 
 This project is a single page application that helps user to find theatres in Warsaw. User can filter results by name. User will see the filtered list and markers on map. Clicking on list item or marker will open InfoWindow with information and photo for selected place.  
