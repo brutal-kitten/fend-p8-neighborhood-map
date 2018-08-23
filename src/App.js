@@ -30,8 +30,9 @@ class App extends Component {
       fetch(`https://api.foursquare.com/v2/venues/search?near=Warsaw&categoryId=4bf58dd8d48988d137941735,4bf58dd8d48988d1ac941735,4bf58dd8d48988d136941735&intent=checkin&radius=6000&url&venuePhotos=1&client_id=1OSAFTMJJMB3INATMRRB2GG5CUAB4XVTRNAEX3QZRELOEESI&client_secret=3KRL4IJWA5MMJAZFAL23T14F3OGZBOKJQOFZWRXAQFI12BMI&v=20180323`)
         .then((response) => response.json())
         .then((result) => {
-          if(!result.response.confident){
+          if(result.meta.code !== 200){
             this.setState({error: true });
+            console.log(result);
           } else {
           console.log(result.response);
           this.setState({
