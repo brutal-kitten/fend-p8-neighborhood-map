@@ -1,4 +1,6 @@
 # Theatres in Warsaw Map
+
+You can check it on-line here:
 https://pedantic-newton-e66415.netlify.com
 
 Project 8 for Front-End Nanodegree Program @Udacity
